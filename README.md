@@ -4,6 +4,11 @@
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10+-green.svg)](https://developers.google.com/mediapipe)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+> ⚠️ **此仓库为个人研究项目，目前缺乏足够的医疗操作数据源来精进模型算法。**
+> 如有任何交流意见、合作意向或数据资源，欢迎邮件联系：**keyneszeng@gmail.com**
+
+
+
 > 用 AI 替代考官的主观评分 — 基于 MediaPipe 姿态估计的 CPR 操作实时评估系统。
 >
 > **纯 Python + 普通 USB 摄像头，零专用硬件，4 小时搭建。**
