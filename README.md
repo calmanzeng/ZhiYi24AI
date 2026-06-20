@@ -160,3 +160,6 @@ Camera → OpenCV → MediaPipe Pose (33 landmarks)
 
 **All 24 clinical skills of 执业医师资格考试 are now supported! ✅**24 skills target, now 16 implemented (67%). Remaining 8: 病史采集(LLM), 病例分析(LLM), 一般检查, 头颈部检查, 胸部检查, 神经系统检查, 脊柱四肢, 吸痰术, 除颤术, 胃管置入**
 **
+
+---
+> 核心算法库已迁移至私有仓库 [ZhiYi24AI-core](https://github.com/calmanzeng/ZhiYi24AI-core)（需授权访问）
