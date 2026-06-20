@@ -1,0 +1,107 @@
+name: debridement
+display_name: 清创术 (Debridement)
+category: surgical
+exam_station: 3
+difficulty: intermediate
+version: 1.0.0
+description: 评估清创操作规范性：消毒范围、清除异物、组织修剪、冲洗
+model:
+  type: mediapipe_pose
+  model_path: ''
+  num_poses: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+landmarks:
+- id: 11
+  name: left_shoulder
+  type: shoulder
+  required: true
+- id: 12
+  name: right_shoulder
+  type: shoulder
+  required: true
+- id: 13
+  name: left_elbow
+  type: elbow
+  required: true
+- id: 14
+  name: right_elbow
+  type: elbow
+  required: true
+- id: 15
+  name: left_wrist
+  type: wrist
+  required: true
+- id: 16
+  name: right_wrist
+  type: wrist
+  required: true
+features:
+- name: hand_symmetry
+  description: 双手协调性
+  type: correlation
+  weight: 0.25
+- name: wrist_speed
+  description: 腕部运动速度
+  type: velocity
+  weight: 0.2
+- name: movement_scope
+  description: 活动范围(消毒范围)
+  type: bounding_box
+  weight: 0.3
+- name: elbow_angle
+  description: 肘关节角度
+  type: angle
+  weight: 0.25
+metrics:
+- name: coordination
+  display_name: 双手协调
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.25
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: scope
+  display_name: 消毒范围
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.3
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: precision
+  display_name: 操作精度
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.25
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: speed
+  display_name: 效率
+  unit: score
+  ideal_range:
+  - 75
+  - 100
+  weight: 0.2
+  target: 80
+  acceptable_range:
+  - 50
+  - 100
+feedback:
+  default_rules: true
+min_detection_frames: 30
+data_collection:
+  enabled: true
+  store_raw_features: false
+  anonymize: true

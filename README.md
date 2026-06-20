@@ -129,24 +129,26 @@ Camera → OpenCV → MediaPipe Pose (33 landmarks)
 
 
 
-## 🏗️ Skills Currently Implemented (8/24)
+## 🏗️ Skills Currently Implemented (16/24)
 
-| # | Skill | Type | Station | Landmarks | Status |
-|:-:|------|:----:|:-------:|:---------:|:-----:|
-| 1 | 心肺复苏 (CPR) | Emergency | 3 | shoulders+writs+hips | ✅ v1.0 |
-| 2 | 缝合打结 (Suturing) | Surgical | 3 | shoulders+elbows+writs+fingers | ✅ v1.0 |
-| 3 | 胸腔穿刺术 (Thoracentesis) | Procedural | 3 | shoulders+writs+hips | ✅ v1.0 |
-| 4 | 腰椎穿刺术 (Lumbar Puncture) | Procedural | 3 | shoulders+hips+knees+writs | ✅ v1.0 |
-| 5 | 导尿术 (Catheterization) | Procedural | 3 | shoulders+elbows+writs | ✅ v1.0 |
-| 6 | 气管插管术 (Intubation) | Emergency | 3 | nose+shoulders+elbows+writs | ✅ v1.0 |
-| 7 | 心肺叩诊 (Percussion) | Physical Exam | 2 | shoulders+elbows+writs+fingers | ✅ v1.0 |
-| 8 | 无菌术 (Sterile Technique) | Surgical | 3 | shoulders+elbows+writs+fingers | ✅ v1.0 |
+| # | Skill | Category | Station | Status |
+|:-:|------|:--------:|:-------:|:-----:|
+| 1 | 心肺复苏 (CPR) | Emergency | 3 | ✅ |
+| 2 | 缝合打结 (Suturing) | Surgical | 3 | ✅ |
+| 3 | 胸腔穿刺术 (Thoracentesis) | Procedural | 3 | ✅ |
+| 4 | 腰椎穿刺术 (Lumbar Puncture) | Procedural | 3 | ✅ |
+| 5 | 导尿术 (Catheterization) | Procedural | 3 | ✅ |
+| 6 | 气管插管术 (Intubation) | Emergency | 3 | ✅ |
+| 7 | 心肺叩诊 (Percussion) | Physical Exam | 2 | ✅ |
+| 8 | 无菌术 (Sterile Technique) | Surgical | 3 | ✅ |
+| 9 | **腹腔穿刺术 (Abdominal Paracentesis)** | Procedural | 3 | ✅ NEW |
+| 10 | **骨髓穿刺术 (Bone Marrow Puncture)** | Procedural | 3 | ✅ NEW |
+| 11 | **静脉穿刺术 (Venipuncture)** | Procedural | 3 | ✅ NEW |
+| 12 | **清创术 (Debridement)** | Surgical | 3 | ✅ NEW |
+| 13 | **骨折固定术 (Fracture Splinting)** | Emergency | 3 | ✅ NEW |
+| 14 | **换药术 (Dressing Change)** | Surgical | 3 | ✅ NEW |
+| 15 | **腹部触诊 (Abdominal Palpation)** | Physical Exam | 2 | ✅ NEW |
+| 16 | **吸氧术 (Oxygen Therapy)** | Procedural | 3 | ✅ NEW |
 
-**24 skills target, now 8 implemented (33%). Next priority: 缝合(已实现), 腹腔穿刺, 骨髓穿刺, 静脉穿刺, 清创术, 骨折固定, 换药术**
-## 📄 License
-
-MIT
-
----
-
-**Made as a job-seeking / BD demo tool. Not production software (yet).**
+**24 skills target, now 16 implemented (67%). Remaining 8: 病史采集(LLM), 病例分析(LLM), 一般检查, 头颈部检查, 胸部检查, 神经系统检查, 脊柱四肢, 吸痰术, 除颤术, 胃管置入**
+**

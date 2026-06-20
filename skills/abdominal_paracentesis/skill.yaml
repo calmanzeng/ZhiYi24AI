@@ -1,0 +1,107 @@
+name: abdominal_paracentesis
+display_name: 腹腔穿刺术 (Abdominal Paracentesis)
+category: procedural
+exam_station: 3
+difficulty: advanced
+version: 1.0.0
+description: 评估腹腔穿刺操作规范性：穿刺点定位、进针角度、深度控制
+model:
+  type: mediapipe_pose
+  model_path: ''
+  num_poses: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+landmarks:
+- id: 11
+  name: left_shoulder
+  type: shoulder
+  required: true
+- id: 12
+  name: right_shoulder
+  type: shoulder
+  required: true
+- id: 15
+  name: left_wrist
+  type: wrist
+  required: true
+- id: 16
+  name: right_wrist
+  type: wrist
+  required: true
+- id: 23
+  name: left_hip
+  type: hip
+  required: true
+- id: 24
+  name: right_hip
+  type: hip
+  required: true
+features:
+- name: insertion_angle
+  description: 进针角度(相对腹壁)
+  type: angle
+  weight: 0.3
+- name: hand_stability
+  description: 操作手稳定性
+  type: variance
+  weight: 0.3
+- name: depth_control
+  description: 进针深度控制
+  type: displacement
+  weight: 0.25
+- name: approach_speed
+  description: 进针速度
+  type: velocity
+  weight: 0.15
+metrics:
+- name: angle_score
+  display_name: 穿刺角度
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.3
+  target: 90
+  acceptable_range:
+  - 70
+  - 110
+- name: stability
+  display_name: 操作稳定性
+  unit: score
+  ideal_range:
+  - 85
+  - 100
+  weight: 0.3
+  target: 95
+  acceptable_range:
+  - 70
+  - 100
+- name: depth_accuracy
+  display_name: 深度控制
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.25
+  target: 90
+  acceptable_range:
+  - 60
+  - 100
+- name: smoothness
+  display_name: 流畅性
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.15
+  target: 90
+  acceptable_range:
+  - 60
+  - 100
+feedback:
+  default_rules: true
+min_detection_frames: 30
+data_collection:
+  enabled: true
+  store_raw_features: false
+  anonymize: true

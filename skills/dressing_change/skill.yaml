@@ -1,0 +1,107 @@
+name: dressing_change
+display_name: 换药术 (Dressing Change)
+category: surgical
+exam_station: 3
+difficulty: basic
+version: 1.0.0
+description: 评估换药操作规范性：揭除敷料、消毒顺序、无菌原则、包扎
+model:
+  type: mediapipe_pose
+  model_path: ''
+  num_poses: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+landmarks:
+- id: 11
+  name: left_shoulder
+  type: shoulder
+  required: true
+- id: 12
+  name: right_shoulder
+  type: shoulder
+  required: true
+- id: 13
+  name: left_elbow
+  type: elbow
+  required: true
+- id: 14
+  name: right_elbow
+  type: elbow
+  required: true
+- id: 15
+  name: left_wrist
+  type: wrist
+  required: true
+- id: 16
+  name: right_wrist
+  type: wrist
+  required: true
+features:
+- name: hand_distance
+  description: 双手间距(无菌范围)
+  type: distance
+  weight: 0.25
+- name: arm_elevation
+  description: 手臂高度
+  type: height
+  weight: 0.25
+- name: movement_scope
+  description: 活动范围控制
+  type: bounding_box
+  weight: 0.25
+- name: smoothness
+  description: 动作流畅度
+  type: smoothness
+  weight: 0.25
+metrics:
+- name: sterile
+  display_name: 无菌操作
+  unit: score
+  ideal_range:
+  - 85
+  - 100
+  weight: 0.3
+  target: 90
+  acceptable_range:
+  - 70
+  - 100
+- name: technique
+  display_name: 换药技术
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.3
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: smoothness
+  display_name: 动作流畅度
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.2
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: efficiency
+  display_name: 效率
+  unit: score
+  ideal_range:
+  - 75
+  - 100
+  weight: 0.2
+  target: 80
+  acceptable_range:
+  - 50
+  - 100
+feedback:
+  default_rules: true
+min_detection_frames: 30
+data_collection:
+  enabled: true
+  store_raw_features: false
+  anonymize: true

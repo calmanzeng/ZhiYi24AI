@@ -1,0 +1,115 @@
+name: abdominal_palpation
+display_name: 腹部触诊 (Abdominal Palpation)
+category: physical_exam
+exam_station: 2
+difficulty: basic
+version: 1.0.0
+description: 评估腹部触诊技术：浅触诊、深触诊、压痛反跳痛检查顺序
+model:
+  type: mediapipe_pose
+  model_path: ''
+  num_poses: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+landmarks:
+- id: 11
+  name: left_shoulder
+  type: shoulder
+  required: true
+- id: 12
+  name: right_shoulder
+  type: shoulder
+  required: true
+- id: 13
+  name: left_elbow
+  type: elbow
+  required: true
+- id: 14
+  name: right_elbow
+  type: elbow
+  required: true
+- id: 15
+  name: left_wrist
+  type: wrist
+  required: true
+- id: 16
+  name: right_wrist
+  type: wrist
+  required: true
+- id: 23
+  name: left_hip
+  type: hip
+  required: true
+- id: 24
+  name: right_hip
+  type: hip
+  required: true
+features:
+- name: touch_pattern
+  description: 触诊按压模式
+  type: periodicity
+  weight: 0.3
+- name: pressure_uniformity
+  description: 按压力度均匀性
+  type: amplitude_variance
+  weight: 0.25
+- name: coverage
+  description: 腹部区域覆盖率
+  type: grid_coverage
+  weight: 0.25
+- name: hand_symmetry
+  description: 双手协调性
+  type: correlation
+  weight: 0.2
+metrics:
+- name: technique
+  display_name: 触诊手法
+  unit: score
+  ideal_range:
+  - 85
+  - 100
+  weight: 0.3
+  target: 90
+  acceptable_range:
+  - 70
+  - 100
+- name: uniformity
+  display_name: 力度均匀
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.25
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: coverage
+  display_name: 区域覆盖
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.25
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+- name: order
+  display_name: 检查顺序
+  unit: score
+  ideal_range:
+  - 80
+  - 100
+  weight: 0.2
+  target: 85
+  acceptable_range:
+  - 60
+  - 100
+feedback:
+  default_rules: true
+min_detection_frames: 30
+data_collection:
+  enabled: true
+  store_raw_features: false
+  anonymize: true
